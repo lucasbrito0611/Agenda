@@ -6,9 +6,10 @@ from templates.loginUI import LoginUI
 from templates.agendahojeUI import AgendaHojeUI
 from templates.servicoreajusteUI import ServicoReajusteUI
 from templates.abrircontaUI import AbrirContaUI
-from templates.confirmaragendaUI import ConfirmarAgendaUI
+from templates.editarperfilUI import EditarPerfilUI
 from templates.agendarhorarioUI import AgendarHorarioUI
 from templates.visualizaragendaUI import VisualizarAgendaUI
+from templates.confirmaragendaUI import ConfirmarAgendaUI
 from views import View
 
 import streamlit as st
@@ -21,13 +22,20 @@ class IndexUI:
         if op == "Abrir conta no Sistema": AbrirContaUI.main()
       else:
           st.sidebar.write("Bem-vindo(a), " + st.session_state["cliente_nome"])
-          if st.session_state["cliente_nome"] != "admin":
-            op1 = st.sidebar.selectbox("Menu", ["Agenda de Hoje", "Agendar Horário", "Visualizar Agendamentos"])
+          if st.sidebar.button('Logout'):
+             del st.session_state["cliente_id"]
+             del st.session_state["cliente_nome"]
+             st.rerun()
+
+          clientes = View.cliente_listar()
+          if st.session_state["cliente_nome"] != clientes[0].get_nome():
+            op1 = st.sidebar.selectbox("Menu", ["Agenda de Hoje", "Agendar Horário", "Visualizar Agendamentos", "Editar Perfil"])
             if op1 == "Agenda de Hoje": AgendaHojeUI.main()
             if op1 == "Agendar Horário": AgendarHorarioUI.main()
             if op1 == "Visualizar Agendamentos": VisualizarAgendaUI.main()
+            if op1 == "Editar Perfil": EditarPerfilUI.main()
           else:
-            op2 = st.sidebar.selectbox("Menu", ["Manter Clientes", "Manter Serviços", "Manter Agenda", "Abrir Agenda do Dia", "Agenda de Hoje", "Reajuste de Preço", "Confirmar Agendamento"])
+            op2 = st.sidebar.selectbox("Menu", ["Manter Clientes", "Manter Serviços", "Manter Agenda", "Abrir Agenda do Dia", "Agenda de Hoje", "Reajuste de Preço", "Confirmar Agendamento", "Editar Perfil"])
             if op2 == "Manter Clientes": ManterClienteUI.main()
             if op2 == "Manter Serviços": ManterServicoUI.main()
             if op2 == "Manter Agenda": ManterAgendaUI.main()
@@ -35,6 +43,7 @@ class IndexUI:
             if op2 == "Agenda de Hoje": AgendaHojeUI.main()
             if op2 == "Reajuste de Preço": ServicoReajusteUI.main()
             if op2 == "Confirmar Agendamento": ConfirmarAgendaUI.main()
+            if op2 == "Editar Perfil": EditarPerfilUI.main()
 
     def main():
       View.cliente_admin()
