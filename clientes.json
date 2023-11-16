@@ -1,0 +1,23 @@
+[
+  {
+    "_Cliente__id": 1,
+    "_Cliente__nome": "admin",
+    "_Cliente__email": "admin",
+    "_Cliente__fone": "0000",
+    "_Cliente__senha": "admin"
+  },
+  {
+    "_Cliente__id": 2,
+    "_Cliente__nome": "Lucas Brito",
+    "_Cliente__email": "lucasbrito@hotmail.com",
+    "_Cliente__fone": "(84)99999-9999",
+    "_Cliente__senha": "12345678"
+  },
+  {
+    "_Cliente__id": 3,
+    "_Cliente__nome": "a",
+    "_Cliente__email": "a",
+    "_Cliente__fone": "a",
+    "_Cliente__senha": "a"
+  }
+]
