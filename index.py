@@ -35,7 +35,7 @@ class IndexUI:
       if op == "Reajuste de Preço": ServicoReajusteUI.main()
       if op == "Confirmar Agendamento": ConfirmarAgendaUI.main()
       if op == "Editar Perfil": EditarPerfilUI.main()
-    def logout()       :
+    def logout():
       if st.sidebar.button('Logout'):
         del st.session_state["cliente_id"]
         del st.session_state["cliente_nome"]
