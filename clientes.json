@@ -1,16 +1,23 @@
 [
   {
     "_Cliente__id": 1,
-    "_Cliente__nome": "a",
-    "_Cliente__email": "a",
-    "_Cliente__fone": "a",
-    "_Cliente__senha": "a"
-  },
-  {
-    "_Cliente__id": 2,
     "_Cliente__nome": "admin",
     "_Cliente__email": "admin",
     "_Cliente__fone": "0000",
     "_Cliente__senha": "admin"
+  },
+  {
+    "_Cliente__id": 2,
+    "_Cliente__nome": "Lucas Brito",
+    "_Cliente__email": "lucasbrito@hotmail.com",
+    "_Cliente__fone": "(84)99373-3283",
+    "_Cliente__senha": "1234"
+  },
+  {
+    "_Cliente__id": 3,
+    "_Cliente__nome": "User 2",
+    "_Cliente__email": "user@gmail.com",
+    "_Cliente__fone": "(84)97839-3839",
+    "_Cliente__senha": "5678"
   }
 ]

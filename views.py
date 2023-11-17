@@ -85,14 +85,14 @@ class View:
         hoje = datetime.datetime.today().date()
         setimo_dia = hoje + datetime.timedelta(days=7)
         for agenda in View.agenda_listar():
-            if  hoje <= agenda.get_data().date() <= setimo_dia and agenda.get_confirmado() == False:
+            if  hoje <= agenda.get_data().date() <= setimo_dia and agenda.get_confirmado() == False and agenda.get_id_cliente() == 0:
                 lista.append(agenda)
         return lista
     
     def agendar_horario(id, id_cliente, id_servico):
         for agenda in View.agenda_listar():
             if agenda.get_id() == id:
-                NAgenda.atualizar(Agenda(agenda.get_id(), agenda.get_data(), True, id_cliente, id_servico))
+                NAgenda.atualizar(Agenda(agenda.get_id(), agenda.get_data(), False, id_cliente, id_servico))
 
     def agenda_visualizar(id , dataini_str, datafin_str):
         dataini = datetime.datetime.strptime(dataini_str, '%d/%m/%Y')        

@@ -18,10 +18,29 @@ class ManterAgendaUI:
     if len(agendas) == 0:
       st.write("Nenhum horário cadastrado")
     else:
-      dic = []
-      for obj in agendas: dic.append(obj.to_json())
-      df = pd.DataFrame(dic)
-      st.dataframe(df)
+      tabela = []
+      
+      for agenda in View.agenda_listar():
+        id = agenda.get_id()
+        data = agenda.get_data()
+        conf = agenda.get_confirmado()
+        idCliente = int(agenda.get_id_cliente())
+        idServico = int(agenda.get_id_servico())
+
+        if idCliente != 0 and idServico != 0:
+          for cliente in View.cliente_listar():
+            if idCliente == cliente.get_id():
+              idCliente = cliente.get_nome()
+            
+          for servico in View.servico_listar():
+            if idServico == servico.get_id():
+              idServico = servico.get_descricao()
+
+        tabela.append([id, data, conf, idCliente, idServico])
+
+      df = pd.DataFrame(tabela, columns=['Id', 'Data', 'Confirmado', 'Cliente', 'Serviço'])
+
+      st.dataframe(df, use_container_width=True)
 
   def inserir():
     datastr = st.text_input("Informe a data no formato *dd/mm/aaaa HH\:MM*")
